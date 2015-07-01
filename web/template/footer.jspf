@@ -1,0 +1,7 @@
+<%@page import="java.util.Calendar"%>
+<%@ page pageEncoding="UTF-8" %>
+
+<hr />
+<footer>
+    © 2012-<%= Calendar.getInstance().get(Calendar.YEAR)%> Echizen Ryoma。保留所有权利。
+</footer>

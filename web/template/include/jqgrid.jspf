@@ -1,0 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<script src="<%=request.getContextPath()%>/js/trirand/jquery.jqGrid.src.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/js/trirand/grid.locale-cn.js" type="text/javascript"></script>
+
+<link href="<%=request.getContextPath()%>/css/trirand/ui.jqgrid.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/css/trirand/ui.jqgrid-bootstarp.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/css/trirand/jqGrid.overrides.css" rel="stylesheet" type="text/css"/>
