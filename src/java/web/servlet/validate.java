@@ -17,10 +17,12 @@ public class validate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         try (PrintWriter out = response.getWriter()) {
             UserJpaController userJpaController =  new UserJpaController();
-            User validateUser = userJpaController.findUser("test");
-            out.print(validateUser.getPassword());
+            User validateUser = userJpaController.findUser(username);
+            out.print(validateUser.getPassword().equals(password));
         }
     }
 
