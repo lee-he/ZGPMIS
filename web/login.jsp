@@ -5,6 +5,8 @@
         <jsp:include page="template/head.jsp">
             <jsp:param name="pageTitle" value='<%= java.net.URLEncoder.encode("登陆", "UTF-8")%>'></jsp:param>
         </jsp:include>
+        <script src="<%=request.getContextPath()%>/js/sha256.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/js/enc-base64-min.js" type="text/javascript"></script>
         <script>
             $(function () {
                 $("#UserLogin").click(function () {
@@ -14,7 +16,7 @@
                     var sendData =
                             {
                                 username: $("#UserName").val(),
-                                password: $("#Password").val()
+                                password: CryptoJS.SHA256($(Password).val()).toString(CryptoJS.enc.Hex).toLowerCase()
                             };
                     $.ajax({
                         type: "POST",
