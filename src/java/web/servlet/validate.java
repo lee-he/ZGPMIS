@@ -2,12 +2,15 @@ package web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 import web.model.User;
 import web.model.UserJpaController;
 
@@ -22,7 +25,9 @@ public class validate extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             UserJpaController userJpaController =  new UserJpaController();
             User validateUser = userJpaController.findUser(username);
-            out.print(validateUser.getPassword().equals(password));
+            Map responseJSONMap = new HashMap();
+            responseJSONMap.put("success", validateUser.getPassword().equals(password));
+            out.print(JSONObject.toJSONString(responseJSONMap));
         }
     }
 

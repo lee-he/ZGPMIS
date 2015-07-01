@@ -3,30 +3,57 @@
 <html>
     <head>
         <jsp:include page="template/head.jsp">
-            <jsp:param name="pageTitle" value="<%= java.net.URLEncoder.encode("登陆", "UTF-8")%>"></jsp:param>
+            <jsp:param name="pageTitle" value='<%= java.net.URLEncoder.encode("登陆", "UTF-8")%>'></jsp:param>
         </jsp:include>
+        <script>
+            $(function () {
+                $("#UserLogin").click(function () {
+                    $("#UserLogin").attr("value", "正在验证身份……");
+                    $("#UserLogin").attr("disabled", "disabled");
+
+                    var sendData =
+                            {
+                                username: $("#UserName").val(),
+                                password: $("#Password").val()
+                            };
+                    $.ajax({
+                        type: "POST",
+                        url: "validate",
+                        data: sendData,
+                        success: function (response) {
+                            var responseData = eval("(" + response + ")");
+                            if (responseData.success) {
+                                window.location.href = "./";
+                            } else {
+                                $("#UserLogin").attr("value", "登陆");
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container body-content">
-            <form class="form-horizontal" role="form">
+            <div class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label for="username_input" class="col-lg-2 control-label">用户名</label>
+                    <label for="UserName" class="col-lg-2 control-label">用户名</label>
                     <div class="col-lg-10">
-                        <input type="text" width="50" class="form-control" id="username_input" placeholder="请输入用户名">
+                        <input type="text" width="50" class="form-control" id="UserName" placeholder="请输入用户名">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password_input" class="col-lg-2 control-label">密码</label>
+                    <label for="Password" class="col-lg-2 control-label">密码</label>
                     <div class="col-lg-10">
-                        <input type="password" width="50" class="form-control" id="password_input" placeholder="请输入密码">
+                        <input type="Password" width="50" class="form-control" id="Password" placeholder="请输入密码">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-primary btn-lg">登陆</button>
+                        <button id="UserLogin" type="buttom" class="btn btn-primary btn-lg">登陆</button>
                     </div>
                 </div>
-            </form>
+            </div>
             <%@include file="template/footer.jspf" %>
         </div> 
     </body>

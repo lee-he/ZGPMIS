@@ -4,7 +4,7 @@
 <html>
     <head>
         <jsp:include page="template/head.jsp">
-            <jsp:param name="pageTitle" value="首页"></jsp:param>
+            <jsp:param name="pageTitle" value='<%= java.net.URLEncoder.encode("登陆", "UTF-8")%>'></jsp:param>
         </jsp:include>
     </head>
     <body>

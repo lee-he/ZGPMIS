@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><%= request.getParameter("pageTitle") %></title>
+        <title><%= java.net.URLDecoder.decode(request.getParameter("pageTitle"), "UTF-8") %></title>
         <%@include file="./include/javascript.jspf" %>
         <%@include file="./include/css.jspf" %>
     </head>
