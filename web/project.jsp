@@ -11,28 +11,51 @@
             $(function () {
                 $("#jqGrid").jqGrid({
                     datatype: "json", //将这里改为使用JSON数据  
-                    url: 'project', //这是Action的请求地址  
+                    url: 'project?oper=list', //这是Action的请求地址  
                     mtype: 'POST',
                     height: 250,
-                    autowidth: false,
-                    shrinkToFit: true,
-                    colNames: ['项目名称', '业主名', '预算', '项目截止日期', '联系电话', '项目地址'],
+                    colNames: ['项目名称', '业主名', '预算(万)', '项目截止日期', '联系电话', '项目地址'],
                     colModel: [
-                        {name: 'name', index: 'name', sorttype: "string", width: "270"},
-                        {name: 'owner', index: 'owner', width: "160"},
-                        {name: 'budget', index: 'budget', width: "80"},
-                        {name: 'duedate', index: 'duedate', width: "120"},
-                        {name: 'tel', index: 'tel', width: "100"},
-                        {name: 'address', index: 'address', width: "210"}
+                        {name: 'name', index: 'name', sorttype: "string", width: "270", key: true, editable: true, editrules:{required: true}},
+                        {name: 'owner', index: 'owner', width: "160", editable: true},
+                        {name: 'budget', index: 'budget', width: "80", align: 'right', editable: true},
+                        {name: 'duedate', index: 'duedate', width: "120", editable: true},
+                        {name: 'tel', index: 'tel', width: "100", editable: true},
+                        {name: 'address', index: 'address', width: "210", editable: true}
                     ],
-                    pager: 'pager', //分页工具栏  
+                    pager: '#jqGridPager', //分页工具栏  
                     rowNum: 10, //每页显示记录数  
                     viewrecords: true, //是否显示行数  
                     rowList: [10, 20, 30], //可调整每页显示的记录数  
                     multiselect: false, //是否支持多选  
                     caption: "项目信息"
                 });
+                $('#jqGrid').navGrid('#jqGridPager',
+                    {edit: true, add: true, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false},
+                    // options for the Edit Dialog
+                    {
+                        editCaption: "编辑",
+                        errorTextFormat: function (data) {
+                            return 'Error: ' + data.responseText
+                        }
+                    },
+                    // options for the Add Dialog
+                    {
+                        url: 'project',
+                        mtype: 'POST',
+                        reloadAfterSubmit: true
+                    },
+                    // options for the Delete Dailog
+                    {
+                        url: 'project',
+                        mtype: 'POST',
+                        reloadAfterSubmit: true
+                    }
+                );
             });
+
+            
+
         </script>
     </head>
 
