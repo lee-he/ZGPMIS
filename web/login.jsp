@@ -3,7 +3,7 @@
 <html>
     <head>
         <jsp:include page="template/head.jsp">
-            <jsp:param name="pageTitle" value='<%= java.net.URLEncoder.encode("登陆", "UTF-8")%>'></jsp:param>
+            <jsp:param name="pageTitle" value='<%= java.net.URLEncoder.encode("登录", "UTF-8")%>'></jsp:param>
         </jsp:include>
         <script src="<%=request.getContextPath()%>/js/sha256.js" type="text/javascript"></script>
         <script src="<%=request.getContextPath()%>/js/enc-base64-min.js" type="text/javascript"></script>
@@ -27,7 +27,7 @@
                             if (responseData.success) {
                                 window.location.href = "./";
                             } else {
-                                $("#UserLogin").attr("value", "登陆");
+                                $("#UserLogin").attr("value", "登录");
                             }
                         }
                     });
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button id="UserLogin" type="buttom" class="btn btn-primary btn-lg">登陆</button>
+                        <button id="UserLogin" type="buttom" class="btn btn-primary btn-lg">登录</button>
                     </div>
                 </div>
             </div>

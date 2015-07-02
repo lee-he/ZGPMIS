@@ -165,6 +165,7 @@ public class ProjectJpaController implements Serializable {
         });
         return resultList;
     }
+
     public List<Map> list(int maxResults, int firstResult) {
         ProjectJpaController projectJpaController = new ProjectJpaController();
         List<Project> projectList = projectJpaController.findProjectEntities(maxResults, firstResult);
@@ -182,4 +183,3 @@ public class ProjectJpaController implements Serializable {
         return resultList;
     }
 }
-

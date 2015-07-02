@@ -3,5 +3,5 @@
 
 <hr />
 <footer>
-    © 2012-<%= Calendar.getInstance().get(Calendar.YEAR)%> Echizen Ryoma。保留所有权利。
+    © 2012-<%= Calendar.getInstance().get(Calendar.YEAR)%> ZGPMIS。保留所有权利。
 </footer>
