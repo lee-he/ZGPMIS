@@ -34,10 +34,9 @@
                     {edit: true, add: true, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false},
                     // options for the Edit Dialog
                     {
-                        editCaption: "编辑",
-                        errorTextFormat: function (data) {
-                            return 'Error: ' + data.responseText
-                        }
+                        url: 'project',
+                        mtype: 'POST',
+                        reloadAfterSubmit: true
                     },
                     // options for the Add Dialog
                     {

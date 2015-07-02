@@ -87,6 +87,25 @@ public class project extends HttpServlet {
                         Logger.getLogger(project.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     break;
+                case "edit":
+                    try {
+                        Project editProject = new Project(name);
+                        editProject.setAddress(address);
+                        editProject.setBudget(Integer.parseInt(budget));
+                        editProject.setDuedate(Date.valueOf(duedate));
+                        editProject.setOwner(owner);
+                        editProject.setTel(tel);
+                        if(id.equals(name)){
+                            projectJpaController.edit(editProject);
+                        }
+                        else{
+                            projectJpaController.destroy(id);
+                            projectJpaController.create(editProject);
+                        }
+                    } catch (Exception ex) {
+                    }
+                    break;
+
             }
 
         }

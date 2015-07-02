@@ -158,7 +158,7 @@ public class ProjectJpaController implements Serializable {
             map.put("name", project.getName());
             map.put("owner", project.getOwner());
             map.put("budget", project.getBudget());
-            map.put("duedate", (new SimpleDateFormat("yyyy/MM/dd")).format(project.getDuedate()));
+            map.put("duedate", (new SimpleDateFormat("yyyy-MM-dd")).format(project.getDuedate()));
             map.put("tel", project.getTel());
             map.put("address", project.getAddress());
             resultList.add(map);
@@ -175,7 +175,7 @@ public class ProjectJpaController implements Serializable {
             map.put("name", project.getName());
             map.put("owner", project.getOwner());
             map.put("budget", project.getBudget());
-            map.put("duedate", (new SimpleDateFormat("yyyy/MM/dd")).format(project.getDuedate()));
+            map.put("duedate", (new SimpleDateFormat("yyyy-MM-dd")).format(project.getDuedate()));
             map.put("tel", project.getTel());
             map.put("address", project.getAddress());
             resultList.add(map);
